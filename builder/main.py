@@ -183,7 +183,9 @@ elif upload_protocol in debug_tools:
     )
     openocd_args.extend([
         "-c", "init; halt;",
-        "-c", "flash protect 0 0 last off; program {$SOURCE} verify; mww 0xe004200c 0x4b5a6978; mww 0xe0042008 0x01; resume; exit 0;"
+        #"-c", "flash protect 0 0 last off; program {$SOURCE} verify; mww 0xe004200c 0x4b5a6978; mww 0xe0042008 0x01; resume; exit 0;"
+        #"-c", "program {$SOURCE} verify; exit 0;"
+        "-c", "program {$SOURCE} verify; reset; exit;"
     ])
     env.Replace(
         UPLOADER="openocd",

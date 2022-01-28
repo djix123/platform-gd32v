@@ -86,14 +86,15 @@ class Gd32vPlatform(PlatformBase):
             server_args = [
                 "-s", "$PACKAGE_DIR/share/openocd/scripts",
                 "-f", "interface/%s.cfg" % openocd_interface,
-                "-c", "transport select jtag",
+                #"-c", "transport select jtag",
                 "-f", "target/gd32vf103.cfg"
             ]
             server_args.append("-c")
             if link in ["um232h"]:
                 server_args.append("adapter_khz 8000")
             else:
-                server_args.append("adapter_khz 1000")
+                #server_args.append("adapter_khz 1000")
+                server_args.append(" ")
 
             if link != "rv-link":
                 debug['tools'][link] = {

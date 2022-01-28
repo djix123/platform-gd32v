@@ -15,11 +15,15 @@ env.Append(
     CPPPATH=[
         join(FRAMEWORK_DIR, "GD32VF103_standard_peripheral"),
         join(FRAMEWORK_DIR, "GD32VF103_standard_peripheral", "Include"),
-        join(FRAMEWORK_DIR, "GD32VF103_usbfs_driver"),
-        join(FRAMEWORK_DIR, "GD32VF103_usbfs_driver", "Include"),
+        join(FRAMEWORK_DIR, "GD32VF103_usbfs_library"),
+        join(FRAMEWORK_DIR, "GD32VF103_usbfs_library", "driver"),
+        join(FRAMEWORK_DIR, "GD32VF103_usbfs_library", "driver", "Include"),
         join(FRAMEWORK_DIR, "RISCV", "drivers"),
         join(FRAMEWORK_DIR, "RISCV", "env_Eclipse"),
         join(FRAMEWORK_DIR, "RISCV", "stubs"),
+        join(FRAMEWORK_DIR, "..", "..", "..", "build", "riscv-gnu-nuclei-toolchain", "riscv-gcc", "include"),
+        join(FRAMEWORK_DIR, "..", "..", "..", "build", "riscv-gnu-nuclei-toolchain", "riscv-gcc", "libgcc", "soft-fp"),
+        join(FRAMEWORK_DIR, "..", "..", "..", "build", "riscv-gnu-nuclei-toolchain", "riscv-gcc", "libgcc", "config", "riscv"),
     ],
 
     LIBS=[
