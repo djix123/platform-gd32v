@@ -1,8 +1,11 @@
 from SCons.Script import Import
+from os.path import join
 
 Import("env")
 
 board = env.BoardConfig()
+
+target_map = join("${BUILD_DIR}", "${PROGNAME}.map")
 
 env.Append(
 
@@ -41,7 +44,8 @@ env.Append(
         "-nostartfiles",
         "-Xlinker",
         "--gc-sections",
-        "--specs=nano.specs"
+        "--specs=nano.specs",
+        "-Wl,-Map,%s" % target_map
         # "-Wl,--wrap=_exit",
         # "-Wl,--wrap=close",
         # "-Wl,--wrap=fatat",
