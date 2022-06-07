@@ -8,12 +8,19 @@ board = env.BoardConfig()
 target_map = join("${BUILD_DIR}", "${PROGNAME}.map")
 
 env.Append(
+    ASFLAGS=[
+        "-march=%s" % board.get("build.march"),
+        "-mabi=%s" % board.get("build.mabi"),
+        "-mcmodel=%s" % board.get("build.mcmodel"),
+    ],
 
-    ASFLAGS = ["-x", "assembler-with-cpp"],
+    ASPPFLAGS=[
+        "-x", "assembler-with-cpp",
+    ],
 
     CCFLAGS=[
         "-Os",
-        "-Wall", 
+        "-Wall",
         "-march=%s" % board.get("build.march"),
         "-mabi=%s" % board.get("build.mabi"),
         "-mcmodel=%s" % board.get("build.mcmodel"),
@@ -60,7 +67,3 @@ env.Append(
 
     LIBS=["c"]
 )
-
-
-# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
-env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
